@@ -23,6 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $totalTrips = 0;
+        $todaySell = 0;
+        $monthSell = 0;
+        $uniqueVisitors = 0;
+        return view('home', compact('totalTrips', 'todaySell', 'monthSell', 'uniqueVisitors'));
     }
 }
