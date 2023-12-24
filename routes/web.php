@@ -34,19 +34,15 @@ Route::middleware('auth')->group(function (){
     Route::get('/location/{location}/edit', [App\Http\Controllers\LocationController::class, 'edit'])->name('location.edit');
     Route::put('/location/{location}/edit', [App\Http\Controllers\LocationController::class, 'update']);
 
-    Route::get('/trips', [App\Http\Controllers\HomeController::class, 'index'])->name('trip.index');
-    Route::get('/trip/add', [App\Http\Controllers\HomeController::class, 'index'])->name('trip.add');
-    Route::post('/trip/add', [App\Http\Controllers\HomeController::class, 'index']);
-    Route::get('/trip/{id}/edit', [App\Http\Controllers\HomeController::class, 'index'])->name('trip.edit');
-    Route::put('/trip/{id}/edit', [App\Http\Controllers\HomeController::class, 'index']);
+    Route::get('/trips', [App\Http\Controllers\TripController::class, 'index'])->name('trip.index');
+    Route::get('/trip/add', [App\Http\Controllers\TripController::class, 'create'])->name('trip.add');
+    Route::post('/trip/add', [App\Http\Controllers\TripController::class, 'store']);
+    Route::get('/trip/{trip}/edit', [App\Http\Controllers\TripController::class, 'edit'])->name('trip.edit');
+    Route::put('/trip/{trip}/edit', [App\Http\Controllers\TripController::class, 'update']);
 
-    Route::get('/tickets', [App\Http\Controllers\HomeController::class, 'index'])->name('ticket.index');
-    Route::get('/ticket/add', [App\Http\Controllers\HomeController::class, 'index'])->name('ticket.add');
-    Route::post('/ticket/add', [App\Http\Controllers\HomeController::class, 'index']);
-
-    Route::get('/ticket/sells', [App\Http\Controllers\HomeController::class, 'index'])->name('ticket.sells');
-    Route::get('/ticket/sell', [App\Http\Controllers\HomeController::class, 'index'])->name('ticket.sell');
-    Route::post('/ticket/sell', [App\Http\Controllers\HomeController::class, 'index']);
+    Route::get('/trip/tickets', [App\Http\Controllers\SeatAllocationController::class, 'index'])->name('ticket.sold');
+    Route::get('/trip/ticket/sell', [App\Http\Controllers\SeatAllocationController::class, 'create'])->name('ticket.sell');
+    Route::post('/trip/ticket/sell', [App\Http\Controllers\SeatAllocationController::class, 'store']);
 
 });
 

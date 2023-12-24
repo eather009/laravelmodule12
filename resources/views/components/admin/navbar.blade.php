@@ -54,10 +54,10 @@
         </a>
 
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ route('ticket.index') }}">
+            <a class="dropdown-item" href="{{ route('ticket.sold') }}">
                 {{ __('Ticket') }}
             </a>
-            <a class="dropdown-item" href="{{ route('ticket.sells') }}">
+            <a class="dropdown-item" href="{{ route('ticket.sell') }}">
                 {{ __('Sell Ticket') }}
             </a>
         </div>

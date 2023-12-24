@@ -12,12 +12,6 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        @if(session('success'))
-                            <div class="alert alert-success">
-                                {{ session('success') }}
-                            </div>
-                        @endif
-
                         <table class="table">
                             <thead>
                             <tr>
