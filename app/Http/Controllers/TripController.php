@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bus;
 use App\Models\Location;
 use App\Models\Trip;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TripController extends Controller
@@ -57,5 +58,21 @@ class TripController extends Controller
         $trip->update($request->all());
 
         return redirect()->route('trip.index')->with('success', 'Trip updated successfully');
+    }
+
+    public function searchTrip(Request $request){
+        $locations = Location::all();
+        $trips = Trip::all();
+        if($request->input('departure_date')){
+            $trips = $trips->where('departure_date','=',Carbon::parse($request->input('departure_date'))->format('Y-m-d'));
+        }
+        if($request->input('departure_location_id')){
+            $trips = $trips->where('departure_location_id','=',(int)$request->input('departure_location_id'));
+        }
+        if($request->input('arrival_location_id')){
+            $trips = $trips->where('arrival_location_id','=',(int)$request->input('arrival_location_id'));
+        }
+
+        return view('trip.search.trip',compact('locations','trips'));
     }
 }

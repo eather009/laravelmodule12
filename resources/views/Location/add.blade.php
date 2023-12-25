@@ -5,6 +5,12 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Add Location</h3>
+                        <div class="card-tools">
+                            <a href="{{ route('location.index') }}" class="btn btn-primary">List of Location</a>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <form action="{{ route('location.add') }}" method="POST">
                             @csrf

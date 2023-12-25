@@ -15,13 +15,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('trip_id');
-            $table->string('seat_number', 3);
+            $table->integer('seat_number')->default(1);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('trip_id')->references('id')->on('trips');
             $table->unique([
-                'trip_id', 'seat_number'
+                'user_id', 'trip_id',
             ], 'uniqueSeat');
         });
     }

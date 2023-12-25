@@ -5,6 +5,12 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Edit Trip</h3>
+                        <div class="card-tools">
+                            <a href="{{ route('trip.index') }}" class="btn btn-primary">List of Trip</a>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <form action="{{ route('trip.edit', $trip->id) }}" method="POST">
                             @method('PUT')

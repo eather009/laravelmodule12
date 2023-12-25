@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SeatAllocation;
+use App\Models\Trip;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,10 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $totalTrips = 0;
-        $todaySell = 0;
-        $monthSell = 0;
-        $uniqueVisitors = 0;
+
+        $totalTrips = Trip::all()->count();
+        $todaySell = SeatAllocation::whereDate('created_at', Carbon::today()->toDateString())->sum('seat_number');
+        $monthSell = SeatAllocation::whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->sum('seat_number');
+        $uniqueVisitors = SeatAllocation::all()->groupBy('user_id')->count();
         return view('home', compact('totalTrips', 'todaySell', 'monthSell', 'uniqueVisitors'));
     }
 }

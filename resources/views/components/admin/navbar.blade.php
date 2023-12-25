@@ -1,3 +1,4 @@
+@auth
 <ul class="navbar-nav me-auto">
     <li class="nav-item">
         <a class="nav-link  {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">{{ __('Home') }}</a>
@@ -50,15 +51,12 @@
     <li class="nav-item dropdown">
         <a id="navbarDropdown" class="nav-link dropdown-toggle {{ request()->routeIs('ticket.*') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown"
            aria-haspopup="true" aria-expanded="false" v-pre>
-            {{ __('Ticket Sell') }}
+            {{ __('Tickets') }}
         </a>
 
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ route('ticket.sold') }}">
-                {{ __('Ticket') }}
-            </a>
-            <a class="dropdown-item" href="{{ route('ticket.sell') }}">
-                {{ __('Sell Ticket') }}
+            <a class="dropdown-item" href="{{ route('ticket.search.trip') }}">
+                {{ __('Search Trip') }}
             </a>
         </div>
     </li>
@@ -83,3 +81,4 @@
         </div>
     </li>
 </ul>
+@endauth

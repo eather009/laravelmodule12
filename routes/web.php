@@ -40,9 +40,11 @@ Route::middleware('auth')->group(function (){
     Route::get('/trip/{trip}/edit', [App\Http\Controllers\TripController::class, 'edit'])->name('trip.edit');
     Route::put('/trip/{trip}/edit', [App\Http\Controllers\TripController::class, 'update']);
 
-    Route::get('/trip/tickets', [App\Http\Controllers\SeatAllocationController::class, 'index'])->name('ticket.sold');
-    Route::get('/trip/ticket/sell', [App\Http\Controllers\SeatAllocationController::class, 'create'])->name('ticket.sell');
-    Route::post('/trip/ticket/sell', [App\Http\Controllers\SeatAllocationController::class, 'store']);
+    Route::get('/ticket/search', [App\Http\Controllers\TripController::class, 'searchTrip'])->name('ticket.search.trip');
+
+    Route::get('/tickets/{trip?}', [App\Http\Controllers\SeatAllocationController::class, 'index'])->name('ticket.sold');
+    Route::get('/ticket/{trip}/sell', [App\Http\Controllers\SeatAllocationController::class, 'create'])->name('ticket.sell');
+    Route::post('/ticket/{trip}/sell', [App\Http\Controllers\SeatAllocationController::class, 'store']);
 
 });
 
