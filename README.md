@@ -25,12 +25,12 @@ chmod -R 775 bootstrap/cache
 
 php artisan migrate
 
-db:seed BusSeeder
+php artisan db:seed BusSeeder
 
-db:seed LocationSeeder
+php artisan db:seed LocationSeeder
 
 ## Run application
 npm install
 
-npm run dev
+npm run dev 
 

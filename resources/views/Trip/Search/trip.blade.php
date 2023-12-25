@@ -72,6 +72,7 @@
                                     @if($trip->bus->total_seat - $trip->seatAllocations->sum('seat_number')  > 0)
                                     <a href="{{ route('ticket.sell', $trip->id) }}" class="btn btn-warning">Sell</a>
                                     @endif
+                                        <a href="{{ route('ticket.sold', $trip->id) }}" class="btn btn-primary">Sold</a>
                                 </td>
                             </tr>
                         @endforeach
